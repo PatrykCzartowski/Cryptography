@@ -24,17 +24,19 @@ def verify_integrity(file_path, hash_file_path, hash_algorithm):
         saved_hash = file.read()
     return current_hash == saved_hash
 
-
+print("text_1")
 generate_hash('text_1.txt', 'md5')
-generate_hash('text_2.txt', 'md5')
-generate_hash('text_3.txt', 'md5')
-print("-------")
 generate_hash('text_1.txt', 'sha256')
-generate_hash('text_2.txt', 'sha256')
-generate_hash('text_3.txt', 'sha256')
-print("-------")
 generate_hash('text_1.txt', 'blake2s')
+print("-------")
+print("text_2")
+generate_hash('text_2.txt', 'md5')
+generate_hash('text_2.txt', 'sha256')
 generate_hash('text_2.txt', 'blake2s')
+print("-------")
+print("text_3")
+generate_hash('text_3.txt', 'md5')
+generate_hash('text_3.txt', 'sha256')
 generate_hash('text_3.txt', 'blake2s')
 
 #save_hash('test_file.txt', 'md5')
