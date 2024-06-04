@@ -26,7 +26,9 @@ def hide_message(message_bytes, argument):
             return
     
         cover_lines = cover.split('\n')
-    
+
+        cover_lines = [line.rstrip() for line in cover_lines]
+        
         file = open('watermark.html', 'w')
     
         iter = 0
@@ -49,6 +51,8 @@ def hide_message(message_bytes, argument):
     elif argument == 2:
         with open('cover.html', 'r') as f:
             cover = f.read()
+        
+        cover_lines = [line.rstrip() for line in cover_lines]
         
         lines_number = cover.count('\n')
         message_length = len(message_bytes)*8
@@ -161,6 +165,8 @@ def hide_message(message_bytes, argument):
             file.write(line + "\n")
         
         file.close()
+    else:
+        print("Invalid second argument")
 
 def extract_message(argument):
 # --- OPTION 1 ---
@@ -264,6 +270,8 @@ def extract_message(argument):
             message += bin_to_hex(''.join(byte)) + " "
         print(message)
     
+    else:
+        print("Invalid second argument")
 
 def main():
     parser = argparse.ArgumentParser()
@@ -280,7 +288,6 @@ def main():
         hide_message(message_bits, args.e)
     elif args.d:
         extract_message(args.d)
-
         
 if __name__ == "__main__":
     main()
